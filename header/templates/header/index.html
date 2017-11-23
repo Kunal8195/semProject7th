@@ -1,0 +1,21 @@
+{% extends 'header/head.html' %}
+{% load staticfiles %}
+
+
+{% block body %}
+<h2>Language is:{{language}}</h2>
+{% csrf_token %}
+<h3> Session Language is :{{session_language}}</h3>
+<h2>Hi {{full_name}}</h2>
+
+{% include 'slider/Slider.html' %}
+{% include 'products/Main_Content.html' %}
+
+<ul>
+   {% for xyz in info %}
+   <li>{{xyz.id}}__{{xyz.customernumber}} and {{xyz.customername}}</li>
+   {% endfor %}
+</ul>
+{% endblock %}
+
+

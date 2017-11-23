@@ -1,0 +1,8 @@
+{% extends 'header/head.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<h1>Hi {{full_name}} u r logged in!</h1>
+<h3><i>Hi {{user}}</i></h3>
+<p>click <a href = "/index/accounts/logout/">here</a> to logout</p>
+{% endblock %}

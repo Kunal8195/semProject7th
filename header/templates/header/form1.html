@@ -1,0 +1,21 @@
+{% extends 'header/index.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<html>
+<head>
+<title>Log in form|Bitch</title>
+</head>
+<body>
+
+
+<form action="/index/accounts/auth/" class="default" method="post" >{% csrf_token %}
+<label for="username">Username</label>
+<input type="text" name ="username" value=""/ >
+<label for="password">password</label>
+<input type="password" name ="password" value=""/ >
+<input type="submit" value="Login"/>
+</form>
+</body>
+</html>
+{% endblock %}
