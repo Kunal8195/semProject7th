@@ -28,11 +28,12 @@ function buttonClick() {
 $(document).on('submit','.delete_from_cart',function(e){
 	e.preventDefault();
 	
+	var id=$(this).val();
 	$.ajax({
 		type:'POST',
 		url:'/deletefromcart/delete/',
 		data:{
-			cart_id:$('.cart_value').val(),
+			cart_id:id,//$('.cart_value').val(),
 			csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val(),
 		},
 		success:function(){
@@ -42,8 +43,8 @@ $(document).on('submit','.delete_from_cart',function(e){
 		});
  });
 
-$(document).ready(function (){
+/*$(document).ready(function (){
    $('tr').on('click',function (){
       $(this).fadeOut(500);
    });
-});
+});*/

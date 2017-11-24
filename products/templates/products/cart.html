@@ -45,9 +45,9 @@
 								<p class="cart_total_price">Rs.{{item.price}}</p>
 							</td>
 							<td class="cart_delete">
-							<form class="delete_from_cart" >{% csrf_token %}
-							<input type="hidden" class="cart_value" value={{item.id}} />
-								<input type="submit"  value="" class="cart_quantity_delete" /><i class="fa fa-times cart_quantity_delete"></i></form>
+							<form class="delete_from_cart" value="{{item.id}}">{% csrf_token %}
+							<input type="hidden" class="cart_value" value="{{item.id}}"/>
+								<input type="submit" value="" class="cart_quantity_delete" /><i class="fa fa-times cart_quantity_delete"></i></form>
 							</td>
 						</tr>
 						{% endfor %}

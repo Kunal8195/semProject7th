@@ -6,6 +6,7 @@ from django.core.context_processors import csrf
 from forms import MyRegistrationForm, Customers_form
 from .models import Customers
 from products.models import product
+from products.models import product, category
 
 
 # Create your views here.
@@ -23,6 +24,8 @@ def index(request):
     c['session_language'] = session_language
     c['info'] = Customers.objects.all()
     c['full_name'] = request.user.username
+    c['pro']=product.objects.all()
+    c['catg']=category.objects.all()
         # user1 = request.session['user']
 
     return render_to_response('header/index.html',

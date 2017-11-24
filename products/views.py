@@ -1,5 +1,5 @@
 from django.shortcuts import render,render_to_response
-from .models import product
+from .models import product, category
 from django.core.context_processors import csrf
 from cart.models import cart_items
 
@@ -10,6 +10,7 @@ def products(request):
     c.update(csrf(request))
     c['full_name']=request.user.username
     c['pro']=product.objects.all()
+    c['catg']=category.objects.all()
     return render_to_response('products/product.html',c)
 
 def product_info(request, product_id):

@@ -24,15 +24,16 @@
 				  <div class="recommended_items"><!--recommended_items-->
 						<h2 class="title text-center">Recommended items</h2>						 
 <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-<div class="carousel-inner">         
+<div class="carousel-inner" style="overflow: hidden !important;">         
     <div class="item active">
     {% for prod in pro %}
+      {% if prod.featured == 0 and prod.trending == 0 %}
         <div class="col-sm-3">
             <div class="product-image-wrapper1">
                 <div class="single-products">
                     <div class="productinfo text-center">
                         <!--sample image, same for all--><img src="{{ prod.image.url }}" alt="" height="150px" width="200px" />
-                        <a href="{% url 'product_info' prod.id %}" ><h2>{{prod.productname}}</h2></a>
+                        <a href="{% url 'product_info' prod.id %}" ><h6>{{prod.productname}}</h6></a>
                         <p>{{prod.producttype}}</p>
                         <p class="btn btn-default ">Rs.{{prod.price}}</p>
                     </div>
@@ -43,6 +44,7 @@
        </div>
        <div class="item">
        {% endif %}
+         {% endif %}
     {% endfor %}
     </div>  
 </div>
@@ -57,82 +59,40 @@
 					 <br>
 				<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Featured Items</h2>
-						<div class="col-sm-3">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-										<div class="productinfo text-center">
-											<img src="{% static 'header/images/home/stock-photo-16791454-coca-cola-can-on-ice.jpg' %}" alt="" />
-											<h2>₹56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-										
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="{% static 'header/images/home/stock-photo-16791454-coca-cola-can-on-ice.jpg' %}" alt="" />
-										<h2>₹56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="{% static 'header/images/home/stock-photo-16791454-coca-cola-can-on-ice.jpg' %}" alt="" />
-										<h2>₹56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="{% static 'header/images/home/stock-photo-16791454-coca-cola-can-on-ice.jpg' %}" alt="" />
-										<h2>₹56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+					
+<div class="carousel-inner" style="overflow: hidden !important;">         
+    <div class="item active">
+    {% for prod in pro %}
+       {% if prod.featured == 1 %} 
+        <div class="col-sm-3">
+            <div class="product-image-wrapper1">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <!--sample image, same for all--><img src="{{ prod.image.url }}" alt="" height="150px" width="200px" />
+                        <a href="{% url 'product_info' prod.id %}" ><h6>{{prod.productname}}</h6></a>
+                        <p>{{prod.producttype}}</p>
+                        <p class="btn btn-default ">Rs.{{prod.price}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       {% if forloop.counter|divisibleby:4 and not forloop.last %}
+       </div>
+       <div class="item">
+       {% endif %}
+         {% endif %}
+    {% endfor %}
+    </div>  
+</div>
+<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+<i class="fa fa-angle-left"></i>
+</a>
+<a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+<i class="fa fa-angle-right"></i>
+</a>            
+                                               
+					</div>
 						</div>
 						<br>
 						
@@ -140,118 +100,30 @@
 						<h2 class="title text-center">Trending Products</h2>
 						
 						<div id="recommended-item-carousel1" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="item active">	
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									
-									
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">	
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-3">
-										<div class="product-image-wrapper1">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="{% static 'header/images/home/2508__14291.1437672247.200.200.jpg' %}" alt="" />
-													<h2>₹56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<div class="carousel-inner" style="overflow: hidden !important;" >         
+    <div class="item active">
+    {% for prod in pro %}
+       {% if prod.trending == 1 %} 
+        <div class="col-sm-3">
+            <div class="product-image-wrapper1">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <!--sample image, same for all--><img src="{{ prod.image.url }}" alt="" height="150px" width="200px" />
+                        <a href="{% url 'product_info' prod.id %}" ><h6>{{prod.productname}}</h6></a>
+                        <p>{{prod.producttype}}</p>
+                        <p class="btn btn-default ">Rs.{{prod.price}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       {% if forloop.counter|divisibleby:4 and not forloop.last %}
+       </div>
+       <div class="item">
+       {% endif %}
+         {% endif %}
+    {% endfor %}
+    </div>  
+</div>
 							 <a class="left recommended-item-control" href="#recommended-item-carousel1" data-slide="prev">
 								<i class="fa fa-angle-left"></i>
 							  </a>
@@ -264,287 +136,115 @@
 			 <div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tshirt" data-toggle="tab">Beverages</a></li>
-								<li><a href="#blazers" data-toggle="tab">Fruits</a></li>
-								<li><a href="#sunglass" data-toggle="tab">Bakery</a></li>
-								<li><a href="#kids" data-toggle="tab">Cleaning</a></li>
-								<li><a href="#poloshirt" data-toggle="tab">Personal Care</a></li>
+								<li class="active"><a href="#tshirt" data-toggle="tab">Civil</a></li>
+								<li><a href="#blazers" data-toggle="tab">Mechanical</a></li>
+								<li><a href="#sunglass" data-toggle="tab">Electrical</a></li>
+								<li><a href="#kids" data-toggle="tab">Electronics</a></li>
+								<li><a href="#poloshirt" data-toggle="tab">CS/IT</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
 							<div class="tab-pane fade active in" id="tshirt" >
+							{% for cate in catg %}
+							  {% if cate.civil == 1 %}
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="{{ cate.image.url }}" alt="" />
+												<h2>Rs.{{ cate.price }}</h2>
+												<a href="{% url 'product_info' cate.id %}"><h6>{{ cate.productname }}</h6></a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								{% endif %}
+							{% endfor %}	
 							</div>
 							
 							<div class="tab-pane fade" id="blazers" >
+								<div class="tab-pane fade active in" id="tshirt" >
+							{% for cate in catg %}
+							 {% if cate.mechanical == 1 %}
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="{{ cate.image.url }}" alt="" />
+												<h2>Rs.{{ cate.price }}</h2>
+												<a href="{% url 'product_info' cate.id %}"><h6>{{ cate.productname }}</h6></a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								{% endif %}
+							{% endfor %}	
+							</div>
 							</div>
 							
 							<div class="tab-pane fade" id="sunglass" >
+								
+							{% for cate in catg %}
+							 {% if cate.electrical == 1 %}
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="{{ cate.image.url }}" alt="" />
+												<h2>Rs.{{ cate.price }}</h2>
+												<a href="{% url 'product_info' cate.id %}"><h6>{{ cate.productname }}</h6></a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								{% endif %}
+							{% endfor %}	
+							
 							</div>
 							
 							<div class="tab-pane fade" id="kids" >
+								
+							{% for cate in catg %}
+							  {% if cate.electronics == 1 %}
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="{{ cate.image.url }}" alt="" />
+												<h2>Rs.{{ cate.price }}</h2>
+												<a href="{% url 'product_info' cate.id %}"><h6>{{ cate.productname }}</h6></a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								{% endif %}
+							{% endfor %}	
+							
 							</div>
 							
 							<div class="tab-pane fade" id="poloshirt" >
+								
+							{% for cate in catg %}
+							   {% if cate.csit == 1 %}
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
 											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<img src="{{ cate.image.url }}" alt="" />
+												<h2>Rs.{{ cate.price }}</h2>
+												<a href="{% url 'product_info' cate.id %}"><h6>{{ cate.productname }}</h6></a>
 											</div>
 											
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="{% static 'header/images/home/soft-drink-bottle-250x250.jpg' %}" alt="" />
-												<h2>₹56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-											
-										</div>
-									</div>
-								</div>
+								{% endif %}
+							{% endfor %}	
+					
 							</div>
 						</div>
 					</div><!--/category-tab-->

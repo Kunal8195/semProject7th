@@ -3,10 +3,10 @@
 
 
 {% block body %}
-<h2>Language is:{{language}}</h2>
+<h2></h2>
 {% csrf_token %}
-<h3> Session Language is :{{session_language}}</h3>
-<h2>Hi {{full_name}}</h2>
+<h3></h3>
+<h2></h2>
 
 {% include 'slider/Slider.html' %}
 {% include 'products/Main_Content.html' %}
@@ -17,5 +17,7 @@
    {% endfor %}
 </ul>
 {% endblock %}
-
+{% block username %}
+{% if full_name %}
+Hi {{full_name}}{% endif %}{% endblock %}
 
