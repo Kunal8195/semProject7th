@@ -70,6 +70,8 @@ def loggedin(request):
     c={}
     c.update(csrf(request))
     c['full_name'] = request.user.username
+    c['pro']=product.objects.all()
+    c['catg']=category.objects.all()
     return render_to_response('header/index.html',c)
 
 

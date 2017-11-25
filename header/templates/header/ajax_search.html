@@ -1,7 +1,7 @@
 {% if p1.count > 0 %}
 
 {% if search_text %}
-{% for p in p1|slice:":5" %}
+{% for p in p1|slice:":7" %}
 <li style="font-size:20px;z-index:4;" class="list-group-item"><a href="/products/product_info/{{p.id}}/">{{p.productname}}</a></li>
 {% endfor %}
 {% endif %}

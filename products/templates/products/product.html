@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block body %}	
 
-<section>        user is : {{full_name}}
+<section>       
 		<div class="container">
 			<div class="row">
 			<div class="col-sm-3">
@@ -26,7 +26,7 @@
 <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
 <div class="carousel-inner" style="overflow: hidden !important;">         
     <div class="item active">
-    {% for prod in pro %}
+    {% for prod in pro|slice:":8" %}
       {% if prod.featured == 0 and prod.trending == 0 %}
         <div class="col-sm-3">
             <div class="product-image-wrapper1">
@@ -63,7 +63,7 @@
 					
 <div class="carousel-inner" style="overflow: hidden !important;">         
     <div class="item active">
-    {% for prod in pro %}
+    {% for prod in pro|slice:":" %}
        {% if prod.featured == 1 %} 
         <div class="col-sm-3">
             <div class="product-image-wrapper1">
@@ -102,7 +102,7 @@
 						<div id="recommended-item-carousel1" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner" style="overflow: hidden !important;" >         
     <div class="item active">
-    {% for prod in pro %}
+    {% for prod in pro|slice:":" %}
        {% if prod.trending == 1 %} 
         <div class="col-sm-3">
             <div class="product-image-wrapper1">
