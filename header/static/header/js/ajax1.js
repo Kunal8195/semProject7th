@@ -13,7 +13,7 @@ $(document).on('submit','#add_to_cart_button',function(e){
 			csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val(),
 		},
 		success:function(){
-			alert("Added");
+			//alert("Added");
 		}	
 			
 		});
@@ -41,18 +41,19 @@ function buttonClick() {
 		}	
 			
 		});
- });*/
+ });
 
 $(document).ready(function (){
-   $('tr').on('click',function (){
+   $('.remove tr').on('click',function (){
       $(this).fadeOut(500);
    });
-});
+});*/
 
 $(document).on('click','.remove',function(e){
 	e.preventDefault();
 
 	var id = $(this).val();
+	var sele = $(this).closest("tr");
 	$.ajax({
 		type:'POST',
 		url:'/deletefromcart/delete/',
@@ -61,7 +62,8 @@ $(document).on('click','.remove',function(e){
 			csrfmiddlewaretoken:$("input[name=csrfmiddlewaretoken]").val(),
 		},
 		success:function(){
-			
+			//td.parent().remove();
+			sele.fadeOut(500);
 		}	
 			
 		});

@@ -16,6 +16,7 @@ def products(request):
 def product_info(request, product_id):
     c={}
     c.update(csrf(request))
+    c['pro']=product.objects.all()
     c['p_t'] = product.objects.get(pk=product_id)
     c['full_name'] = request.user.username
     return render_to_response('products/product-details.html',c)
