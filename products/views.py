@@ -29,7 +29,10 @@ def cart(request):
     return render_to_response('products/cart.html',c)
 
 def checkout(request):
-    return render_to_response('products/checkout.html',{'full_name':request.user.username})
+    c={}
+    c['cart1'] = cart_items.objects.all()
+    c['full_name'] = request.user.username
+    return render_to_response('products/checkout.html',c)
 
 
 

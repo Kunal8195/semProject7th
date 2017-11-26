@@ -8,9 +8,15 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
 import os
+import sys   #newly added
+
+path = '/home/pythonanywhere/projectname'  #newly added
+if path not in sys.path:   #newly added
+	sys.path.append(path)   #newly added
 
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "semProject7th.settings")
 
-application = get_wsgi_application()
+from django.contrib.staticfiles.handlers import StaticFilesHandler #newly added
+application = StaticFilesHandler(get_wsgi_application())  #partially newly added
