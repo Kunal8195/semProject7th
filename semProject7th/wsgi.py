@@ -20,3 +20,11 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'semProject7th.settings')
 
 from django.contrib.staticfiles.handlers import StaticFilesHandler #newly added
 application = StaticFilesHandler(get_wsgi_application())  #partially newly added
+'''
+import os
+
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "semProject7th.settings")
+
+application = get_wsgi_application()'''
