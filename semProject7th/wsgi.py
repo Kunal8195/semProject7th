@@ -16,7 +16,7 @@ if path not in sys.path:   #newly added
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.['DJANGO_SETTINGS_MODULE'] = 'semProject7th.settings'
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'semProject7th.settings')
 
 from django.contrib.staticfiles.handlers import StaticFilesHandler #newly added
 application = StaticFilesHandler(get_wsgi_application())  #partially newly added
